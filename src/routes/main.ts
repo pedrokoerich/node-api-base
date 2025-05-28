@@ -12,6 +12,10 @@ mainRouter.post('/user', async (req, res) => {
         name: 'Pedro Koerich',
         email: 'teste@teste.com.br',
     })
+    if (user) {
+        res.status(201).json({ user })
+    }else{
+        res.status(500).json({ error: 'Failed to create user' });
+    }
 
-    res.json({ user })
 })
