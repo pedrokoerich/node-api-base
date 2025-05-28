@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createUser, createUsers } from '../services/user';
+import { createUser, createUsers, getAllUsers } from '../services/user';
 
 export const mainRouter = Router();
 
@@ -37,3 +37,8 @@ mainRouter.post('/users', async (req, res) => {
 
 
 })
+
+mainRouter.get('/users', async (req, res) => {
+    const users = await getAllUsers();
+    res.json({ users });
+});
