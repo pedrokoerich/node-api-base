@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createUser } from '../services/user';
+import { createUser, createUsers } from '../services/user';
 
 export const mainRouter = Router();
 
@@ -17,5 +17,17 @@ mainRouter.post('/user', async (req, res) => {
     }else{
         res.status(500).json({ error: 'Failed to create user' });
     }
+
+})
+
+mainRouter.post('/users', async (req, res) => {
+    const user = await createUsers([
+        {name: 'Pedro Koerich', email: 'teste@teste.com.br'},
+        {name: 'Fulano', email: 'fulano@teste.com.br'},
+        {name: 'Ciclano', email: 'ciclano@teste.com.br'},
+        {name: 'Beltrano', email: 'beltrano@teste.com.br'},
+    ])
+    res.json({ok: true})
+
 
 })
