@@ -45,3 +45,17 @@ export const getAllUsers = async () => {
     })
     return users;
 }
+
+export const getUserByEmail = async (email: string) => {
+    const user = await prisma.user.findFirst({
+        where: {
+            email
+        },
+        select: {
+            id: true,
+            name: true
+        }
+    })
+
+    return user
+}
