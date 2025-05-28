@@ -21,6 +21,8 @@ model User {
   Post Post[]
   createdAt DateTime @default(now()) //data de criação do usuário
   updatedAt DateTime @updatedAt //data de atualização do usuário
+
+  @@map("users") //mapeia o nome da tabela no banco de dados
 }
 
 model Post { 
@@ -29,4 +31,6 @@ model Post {
   subtitle String? //opcional
   userId Int
   author User @relation(fields: [userId], references: [id]) //referência com o id do usuário
+
+  @@map("posts") //mapeia o nome da tabela no banco de dados
 }
