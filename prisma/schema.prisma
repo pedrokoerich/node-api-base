@@ -18,9 +18,9 @@ model User {
   role   Role @default(USER) //padrão é USER (ENUM)
   email  String  @unique
   status Boolean @default(true)
-  Post Post[]
+  posts Post[]
   createdAt DateTime @default(now()) //data de criação do usuário
-  updatedAt DateTime @updatedAt //data de atualização do usuário
+  updatedAt DateTime @default(now()) @updatedAt //data de atualização do usuário
 
   @@map("users") //mapeia o nome da tabela no banco de dados
 }
