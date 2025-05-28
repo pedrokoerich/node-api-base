@@ -1,38 +1,63 @@
-# Base limpa de API em Node
+# Node API com TypeScript, Express e Prisma
 
-Este repositório serve exclusivamente para oferecer uma base rápida para criação de APIs em Node.
+Este projeto é uma base para desenvolvimento de APIs em Node.js utilizando TypeScript, Express e Prisma ORM. O objetivo é aprofundar conhecimentos em conexão com bancos de dados no Node usando o Prisma.
 
-Ele possui apenas a configuração básica do Express com Typescript e o primeiro router.
+## Tecnologias Utilizadas
+
+- [Node.js](https://nodejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Express](https://expressjs.com/)
+- [Prisma ORM](https://www.prisma.io/)
 
 ## Instalação
-Você pode clonar o repositório e rodar:
+
+Clone o repositório e instale as dependências:
+
 ```bash
+git clone <url-do-repositorio>
+cd <nome-do-projeto>
 npm install
 ```
 
-Depois clonar o arquivo `.env.example` para `.env.local`:
+Copie o arquivo de variáveis de ambiente:
+
 ```bash
-cp .env.example .env.local
+cp .env.example .env
 ```
-E alterar as variáveis de ambiente.
+
+Configure as variáveis de ambiente, especialmente a conexão com o banco de dados.
 
 ## Uso
-Para rodar o projeto, utilize o comando padrão:
+
+Para rodar o projeto em modo de desenvolvimento:
+
 ```bash
 npm run dev
 ```
 
-## Adicionais
-Caso queira, é interessante remover o `origin` do repositório, para adicionar seu próprio repositório remoto e continuar o desenvolvimento.
+Para executar as migrações do Prisma:
 
-Para ver os repositórios remotos:
 ```bash
-git remote -v
+npx prisma migrate dev
 ```
 
-Para trocar o origin:
+## Estrutura do Projeto
+
+- `src/` — Código-fonte da aplicação
+- `prisma/` — Schema e migrações do Prisma
+- `.env` — Variáveis de ambiente
+
+## Observações
+
+- Remova o `origin` do repositório se quiser adicionar seu próprio repositório remoto:
+
 ```bash
 git remote remove origin
 git remote add origin <url>
 ```
-Sendo `<url>` o diretório do seu repositório remoto.
+
+- Consulte a [documentação do Prisma](https://www.prisma.io/docs/) para mais detalhes sobre configuração e uso.
+
+---
+
+Este projeto é focado em aprendizado e experimentação com integração de bancos de dados usando Prisma no Node.js.
