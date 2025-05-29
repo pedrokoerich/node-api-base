@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createUser, createUsers, getAllUsers, getUserByEmail } from '../services/user';
+import { createUser, createUsers, getAllUsers, getUserByEmail, updateUser, updateUserMany } from '../services/user';
 
 export const mainRouter = Router();
 
@@ -45,5 +45,15 @@ mainRouter.get('/users', async (req, res) => {
 
 mainRouter.get('/user', async (req, res) => {
     const user = await getUserByEmail('teste@teste.com.br')
+    res.json({ user });
+});
+
+mainRouter.put('/user', async (req, res) => {
+    const user = await updateUser()
+    res.json({ user });
+});
+
+mainRouter.put('/users', async (req, res) => {
+    const user = await updateUserMany()
     res.json({ user });
 });
