@@ -111,3 +111,26 @@ export const updateUserMany = async () => {
 
     return updatedUser;
 }
+
+export const deleteUser = async (email: string) => {
+    const deletedUser = await prisma.user.delete({
+        where: {
+            email
+        }
+    })
+
+    return deletedUser;
+}
+
+export const deleteUserMany = async () => {
+    const deletedUsers = await prisma.user.deleteMany({
+        where: {
+            email: {
+                endsWith: '@teste.com.br'
+            }
+        }
+    })
+
+    return deletedUsers;
+}
+
