@@ -35,16 +35,6 @@ export const createUsers = async (users: Prisma.UserCreateInput[]) => {
 
 export const getAllUsers = async () => {
     const users = await prisma.user.findMany({
-        where: {
-            posts: {
-                some: { //every = left join | some = inner join
-                    title: {
-                        startsWith: 'Meu'
-                    }
-                }
-
-            }
-        },
         select: {
             id: true,
             name: true,
@@ -56,6 +46,9 @@ export const getAllUsers = async () => {
                 }
             }, 
             posts: true
+        }, 
+        orderBy: {
+            name: 'asc'
         }
         
     })
