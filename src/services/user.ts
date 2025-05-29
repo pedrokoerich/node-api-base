@@ -34,6 +34,9 @@ export const createUsers = async (users: Prisma.UserCreateInput[]) => {
 }
 
 export const getAllUsers = async () => {
+    let page = 1
+
+    let skip = (page - 1) * 10; //fórmula para calcular o skip
     const users = await prisma.user.findMany({
         select: {
             id: true,
@@ -49,7 +52,9 @@ export const getAllUsers = async () => {
         }, 
         orderBy: {
             name: 'asc'
-        }
+        }, 
+        skip: skip, //pular X usuários
+        take: 10 //pegar 10 usuários
         
     })
     return users;
